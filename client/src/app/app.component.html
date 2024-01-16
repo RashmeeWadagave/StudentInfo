@@ -1,0 +1,32 @@
+<button (click)="initNewHero()">Create New Hero</button>
+<label for="hero"> Enter Student ID:</label>
+<div *ngFor="let hero of heroes">
+  <input type="number" id="hero" [(ngModel)]="hero.id"/>
+  <button (click)="idHero(hero)"  >Get detail</button>
+  
+</div>
+
+
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Place</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hero of heroes">
+      <td>{{hero.id}}</td>
+      <td>{{hero.name}}</td>
+      <td>{{hero.firstName}}</td>
+      <td>{{hero.lastName}}</td>
+      <td>{{hero.place}}</td>
+      <td></td>
+      <button (click)="editHero(hero)">Edit</button>
+    </tr>
+  </tbody>
+</table>
+
+<app-edit-hero [hero]="heroToEdit" (heroesUpdated)="updateHeroList($event)"></app-edit-hero>
